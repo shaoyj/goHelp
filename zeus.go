@@ -68,10 +68,10 @@ func InitZeus(devPoints, proPoints, hostPort, serverName string) {
 	}
 }
 
-func Finish(span *opentracing.Span) {
+func FinishZeus(span *opentracing.Span) {
 	(*span).SetTag("hostname", GetHostname()).Finish()
 }
 
-func Commit(text string) {
+func CommitZeus(text string) {
 	opentracing.StartSpan(text).SetTag("hostname", GetHostname()).Finish()
 }

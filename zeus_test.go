@@ -11,10 +11,10 @@ func TestDataFormat(t *testing.T) {
 	NewZipkinTracerFromKafka(strings.Split("10.46.67.89:9092", ","), false,
 		"", "gohelp")
 
-	Commit("test_gohelp")
+	CommitZeus("test_gohelp")
 }
 
 func TestEquals(t *testing.T) {
-	flag:=strings.EqualFold(GetEnv(),"FAT")
+	flag := strings.EqualFold(GetEnv(), "FAT")
 	fmt.Println(flag)
 }
