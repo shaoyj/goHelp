@@ -1,4 +1,4 @@
-module git.wosai-inc.com/ads/goHelp
+module github.com/ads/goHelp
 
 go 1.12
 
