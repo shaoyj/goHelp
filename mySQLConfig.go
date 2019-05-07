@@ -69,8 +69,24 @@ func GetMySqlConfigFromInstrumentation(url string) *MySQLConfig {
 	}
 }
 
-//返回结果格式: username:password@Wc7++@tcp(127.0.0.1:3306)/database
+//返回结果格式: username:password@Wc7++@tcp(127.0.0.1:3306)/database?params
 func GetSqlTcpStyleFromInstrumentation(url string) string {
+	params, pSplit, uSplit := getPSplitAndUSplit(url)
+	var buffer bytes.Buffer
+	buffer.WriteString((*pSplit)[1])
+	buffer.WriteString(":")
+	buffer.WriteString((*pSplit)[2])
+	buffer.WriteString("@tcp(")
+	buffer.WriteString((*uSplit)[0])
+	buffer.WriteString(")/")
+	buffer.WriteString((*uSplit)[1])
+	buffer.WriteString("?")
+	buffer.WriteString(params)
+	return buffer.String()
+}
+
+//返回结果格式: username:password@Wc7++@tcp(127.0.0.1:3306)/database
+func GetSqlTcpStyleFromInstrumentationV2(url string) string {
 	params, pSplit, uSplit := getPSplitAndUSplit(url)
 	var buffer bytes.Buffer
 	buffer.WriteString((*pSplit)[1])
