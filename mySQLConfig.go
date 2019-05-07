@@ -86,8 +86,8 @@ func GetSqlTcpStyleFromInstrumentation(url string) string {
 }
 
 //返回结果格式: username:password@Wc7++@tcp(127.0.0.1:3306)/database
-func GetSqlTcpStyleFromInstrumentationV2(url string) string {
-	params, pSplit, uSplit := getPSplitAndUSplit(url)
+func GetSqlTcpStyleFromInstrumentationNoParams(url string) string {
+	_, pSplit, uSplit := getPSplitAndUSplit(url)
 	var buffer bytes.Buffer
 	buffer.WriteString((*pSplit)[1])
 	buffer.WriteString(":")
@@ -96,8 +96,6 @@ func GetSqlTcpStyleFromInstrumentationV2(url string) string {
 	buffer.WriteString((*uSplit)[0])
 	buffer.WriteString(")/")
 	buffer.WriteString((*uSplit)[1])
-	buffer.WriteString("?")
-	buffer.WriteString(params)
 	return buffer.String()
 }
 
