@@ -4,12 +4,13 @@ import (
 	"github.com/shima-park/agollo"
 )
 
-var Apollo agollo.Agollo
+var GoHelpApollo agollo.Agollo
 
+//初始化
 func InitApollo(configServerURL, appID string) {
 
 	var err error
-	Apollo, err = agollo.New(
+	GoHelpApollo, err = agollo.New(
 		configServerURL,
 		appID,
 		agollo.AutoFetchOnCacheMiss(),
