@@ -21,7 +21,7 @@ func TestInit(t *testing.T) {
 		"127.0.0.1:18080",
 		"appId",
 		func(options *agollo.Options) {
-			//options.DefaultNamespace="application"
+			options.DefaultNamespace="application"
 
 		},
 	)
